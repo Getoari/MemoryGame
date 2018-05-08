@@ -1,0 +1,4 @@
+#Tue May 08 01:14:30 CEST 2018
+base.0=E\:\\Documents\\Android\\AndroidStudioProjects\\MemoryGame\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\24
+path.0=classes.dex
+renamed.0=classes.dex
