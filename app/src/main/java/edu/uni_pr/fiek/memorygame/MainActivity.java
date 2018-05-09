@@ -508,7 +508,7 @@ public class MainActivity extends AppCompatActivity {
                 card19.getVisibility() == View.INVISIBLE){
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
             alertDialogBuilder
-                    .setMessage("Game Over!\n Player 1: "+playerOnePoints+"  Player 2: " + playerTwoPoints +
+                    .setMessage("Game Over!\nPlayer 1: "+playerOnePoints+"  Player 2: " + playerTwoPoints +
                     "\nWinner: " + ((playerOnePoints > playerTwoPoints)? "Player 1" : "Player 2") + ((playerOnePoints == playerTwoPoints)? "DRAW!" : ""))
                     .setCancelable(false)
                     .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
