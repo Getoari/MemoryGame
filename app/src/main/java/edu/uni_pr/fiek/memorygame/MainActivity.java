@@ -11,8 +11,11 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Random;
+import java.util.Iterator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +29,14 @@ public class MainActivity extends AppCompatActivity {
 
     int image101,image102,image103,image104,image105,image106,image107,image108,image109,image110
             ,image201,image202,image203,image204,image205,image206,image207,image208,image209,image210;
+
+    int index;
+
+    int gameMode = 2;
+    ArrayList<ImageButton> cpuMemory = new ArrayList();
+    private Random randomGenerator = new Random();
+    private ArrayList<ImageButton> cards = new ArrayList<ImageButton>();
+    private ArrayList<Integer> removedCards = new ArrayList<Integer>();
 
     int firstCard, secondCard;
     int clickedFirst, clickedSecond;
@@ -65,6 +76,27 @@ public class MainActivity extends AppCompatActivity {
         card17 = (ImageButton) findViewById(R.id.card18);
         card18 = (ImageButton) findViewById(R.id.card19);
         card19 = (ImageButton) findViewById(R.id.card20);
+
+        cards.add(0,card0);
+        cards.add(1,card1);
+        cards.add(2,card2);
+        cards.add(3,card3);
+        cards.add(4,card4);
+        cards.add(5,card5);
+        cards.add(6,card6);
+        cards.add(7,card7);
+        cards.add(8,card8);
+        cards.add(9,card9);
+        cards.add(10,card10);
+        cards.add(11,card11);
+        cards.add(12,card12);
+        cards.add(13,card13);
+        cards.add(14,card14);
+        cards.add(15,card15);
+        cards.add(16,card16);
+        cards.add(17,card17);
+        cards.add(18,card18);
+        cards.add(19,card19);
 
         card0.setTag("0");
         card1.setTag("1");
@@ -281,6 +313,10 @@ public class MainActivity extends AppCompatActivity {
             ib.setBackgroundResource(image210);
         }
 
+        if(gameMode == 2) {
+            //cpuMemory.add(card, ib);
+        }
+
         if(cardCount == 1) {
             firstCard = cardsArray[card];
             if(firstCard > 200) {
@@ -298,26 +334,9 @@ public class MainActivity extends AppCompatActivity {
             cardCount = 1;
             clickedSecond = card;
 
-            card0.setEnabled(false);
-            card1.setEnabled(false);
-            card2.setEnabled(false);
-            card3.setEnabled(false);
-            card4.setEnabled(false);
-            card5.setEnabled(false);
-            card6.setEnabled(false);
-            card7.setEnabled(false);
-            card8.setEnabled(false);
-            card9.setEnabled(false);
-            card10.setEnabled(false);
-            card11.setEnabled(false);
-            card12.setEnabled(false);
-            card13.setEnabled(false);
-            card14.setEnabled(false);
-            card15.setEnabled(false);
-            card16.setEnabled(false);
-            card17.setEnabled(false);
-            card18.setEnabled(false);
-            card19.setEnabled(false);
+            for (ImageButton a: cards) {
+                a.setEnabled(false);
+            }
 
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -331,91 +350,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void calculate() {
         if(firstCard == secondCard) {
-            if(clickedFirst == 0) {
-                card0.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 1) {
-                card1.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 2) {
-                card2.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 3) {
-                card3.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 4) {
-                card4.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 5) {
-                card5.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 6) {
-                card6.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 7) {
-                card7.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 8) {
-                card8.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 9) {
-                card9.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 10) {
-                card10.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 11) {
-                card11.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 12) {
-                card12.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 13) {
-                card13.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 14) {
-                card14.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 15) {
-                card15.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 16) {
-                card16.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 17) {
-                card17.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 18) {
-                card18.setVisibility(View.INVISIBLE);
-            } else if(clickedFirst == 19) {
-                card19.setVisibility(View.INVISIBLE);
-            }
-        }
 
-        if(firstCard == secondCard) {
-            if(clickedSecond == 0) {
-                card0.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 1) {
-                card1.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 2) {
-                card2.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 3) {
-                card3.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 4) {
-                card4.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 5) {
-                card5.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 6) {
-                card6.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 7) {
-                card7.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 8) {
-                card8.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 9) {
-                card9.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 10) {
-                card10.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 11) {
-                card11.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 12) {
-                card12.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 13) {
-                card13.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 14) {
-                card14.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 15) {
-                card15.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 16) {
-                card16.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 17) {
-                card17.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 18) {
-                card18.setVisibility(View.INVISIBLE);
-            } else if(clickedSecond == 19) {
-                card19.setVisibility(View.INVISIBLE);
-            }
+            cards.get(clickedFirst).setVisibility(View.INVISIBLE);
+            cards.get(clickedSecond).setVisibility(View.INVISIBLE);
 
             if(turn == 1) {
                 playerOnePoints++;
@@ -423,28 +360,21 @@ public class MainActivity extends AppCompatActivity {
             } else if (turn == 2) {
                 playerTwoPoints++;
                 tvPlayerTwoScore.setText(playerTwoPoints+"");
+
+                if(gameMode == 2) {
+                    cpuPlay();
+                }
+            }
+
+            if (gameMode == 2) {
+                removedCards.add(clickedFirst);
+                removedCards.add(clickedSecond);
+                System.out.println("Removed clicledFisrt: " + clickedFirst + " ClickedSecond:" + clickedSecond );
             }
         } else {
-            card0.setBackgroundResource(R.drawable.ic_unknown);
-            card1.setBackgroundResource(R.drawable.ic_unknown);
-            card2.setBackgroundResource(R.drawable.ic_unknown);
-            card3.setBackgroundResource(R.drawable.ic_unknown);
-            card4.setBackgroundResource(R.drawable.ic_unknown);
-            card5.setBackgroundResource(R.drawable.ic_unknown);
-            card6.setBackgroundResource(R.drawable.ic_unknown);
-            card7.setBackgroundResource(R.drawable.ic_unknown);
-            card8.setBackgroundResource(R.drawable.ic_unknown);
-            card9.setBackgroundResource(R.drawable.ic_unknown);
-            card10.setBackgroundResource(R.drawable.ic_unknown);
-            card11.setBackgroundResource(R.drawable.ic_unknown);
-            card12.setBackgroundResource(R.drawable.ic_unknown);
-            card13.setBackgroundResource(R.drawable.ic_unknown);
-            card14.setBackgroundResource(R.drawable.ic_unknown);
-            card15.setBackgroundResource(R.drawable.ic_unknown);
-            card16.setBackgroundResource(R.drawable.ic_unknown);
-            card17.setBackgroundResource(R.drawable.ic_unknown);
-            card18.setBackgroundResource(R.drawable.ic_unknown);
-            card19.setBackgroundResource(R.drawable.ic_unknown);
+            for (ImageButton a: cards) {
+                a.setBackgroundResource(R.drawable.ic_unknown);
+            }
 
             if(turn == 1) {
                 turn = 2;
@@ -452,6 +382,11 @@ public class MainActivity extends AppCompatActivity {
                 tvPlayerOneScore.setTextColor(Color.GRAY);
                 tvPlayerTwo.setTextColor(Color.BLACK);
                 tvPlayerTwoScore.setTextColor(Color.BLACK);
+
+                if(gameMode == 2) {
+                    tvPlayerTwo.setText("CPU");
+                    cpuPlay();
+                }
             } else if(turn == 2) {
                 turn = 1;
                 tvPlayerOne.setTextColor(Color.BLACK);
@@ -461,51 +396,56 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        card0.setEnabled(true);
-        card1.setEnabled(true);
-        card2.setEnabled(true);
-        card3.setEnabled(true);
-        card4.setEnabled(true);
-        card5.setEnabled(true);
-        card6.setEnabled(true);
-        card7.setEnabled(true);
-        card8.setEnabled(true);
-        card9.setEnabled(true);
-        card10.setEnabled(true);
-        card11.setEnabled(true);
-        card12.setEnabled(true);
-        card13.setEnabled(true);
-        card14.setEnabled(true);
-        card15.setEnabled(true);
-        card16.setEnabled(true);
-        card17.setEnabled(true);
-        card18.setEnabled(true);
-        card19.setEnabled(true);
+        for (ImageButton a: cards) {
+            a.setEnabled(true);
+        }
 
         checkEnd();
     }
 
+    private void cpuPlay() {
+
+        for (ImageButton a: cards) {
+            a.setClickable(false);
+        }
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                index = randomGenerator.nextInt(cards.size());
+
+                while (removedCards.contains(index)) {
+                    randomGenerator = new Random();
+                    index = randomGenerator.nextInt(cards.size());
+                }
+                System.out.println("index: " + index + " Cardsleft: " + cards.size());
+                ImageButton ib = cards.get(index);
+                doAction(ib,index);
+            }
+        },1000);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                int tempIndex = index;
+                while (index == tempIndex || removedCards.contains(index)) {
+                    randomGenerator = new Random();
+                    index = randomGenerator.nextInt(cards.size());
+                }
+                System.out.println("index: " + index + " Cardsleft: " + cards.size());
+                System.out.println(removedCards);
+                ImageButton ib = cards.get(index);
+                doAction(ib,index);
+
+                for (ImageButton a: cards) {
+                    a.setClickable(true);
+                }
+            }
+        },2000);
+    }
+
     private void checkEnd() {
-        if( card0.getVisibility() == View.INVISIBLE &&
-                card1.getVisibility() == View.INVISIBLE &&
-                card2.getVisibility() == View.INVISIBLE &&
-                card3.getVisibility() == View.INVISIBLE &&
-                card4.getVisibility() == View.INVISIBLE &&
-                card5.getVisibility() == View.INVISIBLE &&
-                card6.getVisibility() == View.INVISIBLE &&
-                card7.getVisibility() == View.INVISIBLE &&
-                card8.getVisibility() == View.INVISIBLE &&
-                card9.getVisibility() == View.INVISIBLE &&
-                card10.getVisibility() == View.INVISIBLE &&
-                card11.getVisibility() == View.INVISIBLE &&
-                card12.getVisibility() == View.INVISIBLE &&
-                card13.getVisibility() == View.INVISIBLE &&
-                card14.getVisibility() == View.INVISIBLE &&
-                card15.getVisibility() == View.INVISIBLE &&
-                card16.getVisibility() == View.INVISIBLE &&
-                card17.getVisibility() == View.INVISIBLE &&
-                card18.getVisibility() == View.INVISIBLE &&
-                card19.getVisibility() == View.INVISIBLE){
+        if(cards.size() == removedCards.size()){
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
             alertDialogBuilder
                     .setMessage("Game Over!\nPlayer 1: "+playerOnePoints+"  Player 2: " + playerTwoPoints +
