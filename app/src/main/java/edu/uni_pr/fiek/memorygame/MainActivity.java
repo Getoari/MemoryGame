@@ -14,7 +14,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
     int index;
 
     int gameMode = 2;
-    ArrayList<ImageButton> cpuMemory = new ArrayList();
+    int gameDifficulty = 2;
+    Map<Integer,Integer> cpuMemory = new ConcurrentHashMap<Integer, Integer>();
     private Random randomGenerator = new Random();
     private ArrayList<ImageButton> cards = new ArrayList<ImageButton>();
     private ArrayList<Integer> removedCards = new ArrayList<Integer>();
@@ -122,6 +125,13 @@ public class MainActivity extends AppCompatActivity {
         tvPlayerOneScore.setTextColor(Color.BLACK);
         tvPlayerTwo.setTextColor(Color.GRAY);
         tvPlayerTwoScore.setTextColor(Color.GRAY);
+
+        if(gameMode == 2) {
+            tvPlayerTwo.setText("CPU");
+        } else if(gameMode == 0) {
+            tvPlayerTwo.setText("");
+            tvPlayerTwoScore.setText("");
+        }
 
         frontOfCardsResources();
 
@@ -313,7 +323,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(gameMode == 2) {
-            //cpuMemory.add(card, ib);
+            cpuMemory.put(card,cardsArray[card]);
         }
 
         if(cardCount == 1) {
@@ -368,7 +378,8 @@ public class MainActivity extends AppCompatActivity {
             if (gameMode == 2) {
                 removedCards.add(clickedFirst);
                 removedCards.add(clickedSecond);
-                System.out.println("Removed clicledFisrt: " + clickedFirst + " ClickedSecond:" + clickedSecond );
+                cpuMemory.remove(clickedFirst);
+                cpuMemory.remove(clickedSecond);
             }
         } else {
             for (ImageButton a: cards) {
@@ -383,7 +394,6 @@ public class MainActivity extends AppCompatActivity {
                 tvPlayerTwoScore.setTextColor(Color.BLACK);
 
                 if(gameMode == 2) {
-                    tvPlayerTwo.setText("CPU");
                     cpuPlay();
                 }
             } else if(turn == 2) {
@@ -404,21 +414,48 @@ public class MainActivity extends AppCompatActivity {
 
     private void cpuPlay() {
 
+        if(gameDifficulty == 1) {
+            for (int key1: cpuMemory.keySet()) {
+                if(cpuMemory.size() > 2) {
+                    cpuMemory.remove(key1);
+                }
+            }
+        } else if(gameDifficulty == 2) {
+            for (int key1: cpuMemory.keySet()) {
+                if(cpuMemory.size() > 3) {
+                    cpuMemory.remove(key1);
+                }
+            }
+        }
+
         for (ImageButton a: cards) {
             a.setClickable(false);
         }
-
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                index = randomGenerator.nextInt(cards.size());
+                boolean match = false;
 
-                while (removedCards.contains(index)) {
-                    randomGenerator = new Random();
-                    index = randomGenerator.nextInt(cards.size());
+                for (int key1: cpuMemory.keySet()) {
+                    for (int key2 : cpuMemory.keySet()) {
+                        if (Math.abs(cpuMemory.get(key1) - (cpuMemory.get(key2))) == 100) {
+                            index = key1;
+                            match = true;
+                            break;
+                        }
+                    }
                 }
-                System.out.println("index: " + index + " Cardsleft: " + cards.size());
+
+                if(match == false) {
+                    index = randomGenerator.nextInt(cards.size());
+
+                    while (removedCards.contains(index)) {
+                        randomGenerator = new Random();
+                        index = randomGenerator.nextInt(cards.size());
+                    }
+                }
+
                 ImageButton ib = cards.get(index);
                 doAction(ib,index);
             }
@@ -426,13 +463,28 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                boolean match = false;
                 int tempIndex = index;
-                while (index == tempIndex || removedCards.contains(index)) {
-                    randomGenerator = new Random();
-                    index = randomGenerator.nextInt(cards.size());
+
+                for (int key1: cpuMemory.keySet()) {
+                    for (int key2 : cpuMemory.keySet()) {
+                        if (Math.abs(cpuMemory.get(key1) - (cpuMemory.get(key2))) == 100) {
+                            if(tempIndex != key2) {
+                                index = key2;
+                                match = true;
+                                break;
+                            }
+                        }
+                    }
                 }
-                System.out.println("index: " + index + " Cardsleft: " + cards.size());
-                System.out.println(removedCards);
+
+                if(match == false) {
+                    while (index == tempIndex || removedCards.contains(index)) {
+                        randomGenerator = new Random();
+                        index = randomGenerator.nextInt(cards.size());
+                    }
+                }
+
                 ImageButton ib = cards.get(index);
                 doAction(ib,index);
 
@@ -444,11 +496,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkEnd() {
+
         if(cards.size() == removedCards.size()){
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
             alertDialogBuilder
                     .setMessage("Game Over!\nPlayer 1: "+playerOnePoints+"  Player 2: " + playerTwoPoints +
-                    "\nWinner: " + ((playerOnePoints > playerTwoPoints)? "Player 1" : "Player 2") + ((playerOnePoints == playerTwoPoints)? "DRAW!" : ""))
+                    "\nWinner: " + ((playerOnePoints > playerTwoPoints)? "Player 1" : "Player 2") + ((playerOnePoints == playerTwoPoints)? "\nDRAW!" : ""))
                     .setCancelable(false)
                     .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
                         @Override
