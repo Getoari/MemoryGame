@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     int index;
 
     int gameMode = 2;
-    int gameDifficulty = 2;
+    int gameDifficulty = 3;
     Map<Integer,Integer> cpuMemory = new ConcurrentHashMap<Integer, Integer>();
     private Random randomGenerator = new Random();
     private ArrayList<ImageButton> cards = new ArrayList<ImageButton>();
@@ -431,65 +431,74 @@ public class MainActivity extends AppCompatActivity {
         for (ImageButton a: cards) {
             a.setClickable(false);
         }
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+
+        Handler handler1 = new Handler();
+        handler1.postDelayed(new Runnable() {
             @Override
             public void run() {
                 boolean match = false;
 
-                for (int key1: cpuMemory.keySet()) {
-                    for (int key2 : cpuMemory.keySet()) {
-                        if (Math.abs(cpuMemory.get(key1) - (cpuMemory.get(key2))) == 100) {
-                            index = key1;
-                            match = true;
-                            break;
-                        }
-                    }
-                }
+                if (removedCards.size() != cards.size()) {
 
-                if(match == false) {
-                    index = randomGenerator.nextInt(cards.size());
-
-                    while (removedCards.contains(index)) {
-                        randomGenerator = new Random();
-                        index = randomGenerator.nextInt(cards.size());
-                    }
-                }
-
-                ImageButton ib = cards.get(index);
-                doAction(ib,index);
-            }
-        },1000);
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                boolean match = false;
-                int tempIndex = index;
-
-                for (int key1: cpuMemory.keySet()) {
-                    for (int key2 : cpuMemory.keySet()) {
-                        if (Math.abs(cpuMemory.get(key1) - (cpuMemory.get(key2))) == 100) {
-                            if(tempIndex != key2) {
-                                index = key2;
+                    for (int key1 : cpuMemory.keySet()) {
+                        for (int key2 : cpuMemory.keySet()) {
+                            if (Math.abs(cpuMemory.get(key1) - (cpuMemory.get(key2))) == 100) {
+                                index = key1;
                                 match = true;
                                 break;
                             }
                         }
                     }
-                }
 
-                if(match == false) {
-                    while (index == tempIndex || removedCards.contains(index)) {
-                        randomGenerator = new Random();
+                    if (match == false) {
                         index = randomGenerator.nextInt(cards.size());
+
+                        while (removedCards.contains(index)) {
+                            randomGenerator = new Random();
+                            index = randomGenerator.nextInt(cards.size());
+                        }
                     }
+
+                    ImageButton ib = cards.get(index);
+                    doAction(ib, index);
                 }
+            }
+        },1000);
 
-                ImageButton ib = cards.get(index);
-                doAction(ib,index);
+        Handler handler2 = new Handler();
+        handler2.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                boolean match = false;
+                int tempIndex = index;
 
-                for (ImageButton a: cards) {
-                    a.setClickable(true);
+                if (removedCards.size() != cards.size()) {
+
+                    for (int key1 : cpuMemory.keySet()) {
+                        for (int key2 : cpuMemory.keySet()) {
+                            if (Math.abs(cpuMemory.get(key1) - (cpuMemory.get(key2))) == 100) {
+                                if (tempIndex != key2) {
+                                    index = key2;
+                                    match = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (match == false) {
+                        while (index == tempIndex || removedCards.contains(index)) {
+                            randomGenerator = new Random();
+                            index = randomGenerator.nextInt(cards.size());
+                        }
+                    }
+
+                    ImageButton ib = cards.get(index);
+                    doAction(ib, index);
+
+                    for (ImageButton a : cards) {
+                        a.setClickable(true);
+                    }
                 }
             }
         },2000);
