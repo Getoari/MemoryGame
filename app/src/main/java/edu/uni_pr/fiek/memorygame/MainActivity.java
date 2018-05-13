@@ -34,10 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
     int index;
 
-    int gameMode;
-    // GameMode 0 - 1Player, 1 - 2Player, 2 - PlayerVScpu
-    int gameDifficulty;
-    // GameDifficulty 1 - Easy, 2 - Medium, 3 - Hard
+    String gameMode;
+    String gameDifficulty;
 
     Map<Integer,Integer> cpuMemory = new ConcurrentHashMap<Integer, Integer>();
     private Random randomGenerator = new Random();
@@ -59,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
         Intent i = getIntent();
 
-        gameMode = i.getIntExtra("GameMode",0);
-        gameDifficulty = i.getIntExtra("GameDifficulty", 0);
+        gameMode = i.getStringExtra("GameMode");
+        gameDifficulty = i.getStringExtra("GameDifficulty");
 
         tvPlayerOneScore = (TextView) findViewById(R.id.tvPlayerOneScore);
         tvPlayerTwoScore = (TextView) findViewById(R.id.tvPlayerTwoScore);
@@ -135,9 +133,9 @@ public class MainActivity extends AppCompatActivity {
         tvPlayerTwo.setTextColor(Color.GRAY);
         tvPlayerTwoScore.setTextColor(Color.GRAY);
 
-        if(gameMode == 2) {
+        if(gameMode.equals("cpu")) {
             tvPlayerTwo.setText("CPU");
-        } else if(gameMode == 0) {
+        } else if(gameMode.equals("1player")) {
             tvPlayerTwo.setText("");
             tvPlayerTwoScore.setText("");
         }
@@ -331,7 +329,7 @@ public class MainActivity extends AppCompatActivity {
             ib.setBackgroundResource(image210);
         }
 
-        if(gameMode == 2) {
+        if(gameMode.equals("cpu")) {
             cpuMemory.put(card,cardsArray[card]);
         }
 
@@ -379,7 +377,7 @@ public class MainActivity extends AppCompatActivity {
                 playerTwoPoints++;
                 tvPlayerTwoScore.setText(playerTwoPoints+"");
 
-                if(gameMode == 2) {
+                if(gameMode.equals("cpu")) {
                     cpuPlay();
                 }
             }
@@ -387,7 +385,7 @@ public class MainActivity extends AppCompatActivity {
             removedCards.add(clickedFirst);
             removedCards.add(clickedSecond);
 
-            if (gameMode == 2) {
+            if (gameMode.equals("cpu")) {
                 cpuMemory.remove(clickedFirst);
                 cpuMemory.remove(clickedSecond);
             }
@@ -404,7 +402,7 @@ public class MainActivity extends AppCompatActivity {
                 tvPlayerTwo.setTextColor(Color.BLACK);
                 tvPlayerTwoScore.setTextColor(Color.BLACK);
 
-                if(gameMode == 2) {
+                if(gameMode.equals("cpu")) {
                     cpuPlay();
                 }
             } else if(turn == 2) {
@@ -415,7 +413,7 @@ public class MainActivity extends AppCompatActivity {
                 tvPlayerTwoScore.setTextColor(Color.GRAY);
             }
 
-            if( gameMode == 0 ) {
+            if( gameMode.equals("1player") ) {
                 turn = 1;
                 tvPlayerOne.setTextColor(Color.BLACK);
                 tvPlayerOneScore.setTextColor(Color.BLACK);
@@ -431,13 +429,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void cpuPlay() {
 
-        if(gameDifficulty == 1) {
+        if(gameDifficulty.equals("easy")) {
             for (int key1: cpuMemory.keySet()) {
                 if(cpuMemory.size() > 2) {
                     cpuMemory.remove(key1);
                 }
             }
-        } else if(gameDifficulty == 2) {
+        } else if(gameDifficulty.equals("medium")) {
             for (int key1: cpuMemory.keySet()) {
                 if(cpuMemory.size() > 3) {
                     cpuMemory.remove(key1);

@@ -29,7 +29,7 @@ public class StarterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("GameMode",0);
+                intent.putExtra("GameMode","1player");
                 startActivity(intent);
             }
         });
@@ -38,7 +38,7 @@ public class StarterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                intent.putExtra("GameMode",1);
+                intent.putExtra("GameMode","2players");
                 startActivity(intent);
             }
         });
@@ -62,10 +62,9 @@ public class StarterActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                        intent.putExtra("GameMode",2);
-                        intent.putExtra("GameDifficulty",1);
+                        intent.putExtra("GameMode","cpu");
+                        intent.putExtra("GameDifficulty","easy");
                         startActivity(intent);
-                        PreferenceManager.getDefaultSharedPreferences(StarterActivity.this).edit().putString("GameDifficulty", "1").apply();
                     }
                 });
 
@@ -73,8 +72,8 @@ public class StarterActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                        intent.putExtra("GameMode",2);
-                        intent.putExtra("GameDifficulty",2);
+                        intent.putExtra("GameMode","cpu");
+                        intent.putExtra("GameDifficulty","medium");
                         startActivity(intent);
                     }
                 });
@@ -83,8 +82,8 @@ public class StarterActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                        intent.putExtra("GameMode",2);
-                        intent.putExtra("GameDifficulty",1);
+                        intent.putExtra("GameMode","cpu");
+                        intent.putExtra("GameDifficulty","hard");
                         startActivity(intent);
                     }
                 });
