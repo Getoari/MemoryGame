@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Documents\\Android\\AndroidStudioProjects\\MemoryGame\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v25\\values-v25.xml",
+            "outputFile": "D:\\FIEK\\Semestri VI\\Android\\MemoryGame\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v25\\values-v25.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\GetoarGaxherri\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\92db614349efc97547b751a83866c0ee\\res\\values-v25\\values-v25.xml",
+                    "source": "C:\\Users\\Fisnik\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\664b7e13d4bf3f9c8c1883a2cf61a474\\res\\values-v25\\values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",

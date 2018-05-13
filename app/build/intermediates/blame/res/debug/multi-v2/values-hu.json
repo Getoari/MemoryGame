@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Documents\\Android\\AndroidStudioProjects\\MemoryGame\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hu\\values-hu.xml",
+            "outputFile": "D:\\FIEK\\Semestri VI\\Android\\MemoryGame\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hu\\values-hu.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\GetoarGaxherri\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\92db614349efc97547b751a83866c0ee\\res\\values-hu\\values-hu.xml",
+                    "source": "C:\\Users\\Fisnik\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\664b7e13d4bf3f9c8c1883a2cf61a474\\res\\values-hu\\values-hu.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\GetoarGaxherri\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\aefe1bf77b62b36b12a885b7f05dbd5c\\res\\values-hu\\values-hu.xml",
+                    "source": "C:\\Users\\Fisnik\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\a1756d68413b69fa40fda45d05283f7d\\res\\values-hu\\values-hu.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

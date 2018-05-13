@@ -1,10 +1,20 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Documents\\Android\\AndroidStudioProjects\\MemoryGame\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ne\\values-ne.xml",
+            "outputFile": "D:\\FIEK\\Semestri VI\\Android\\MemoryGame\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ne\\values-ne.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\GetoarGaxherri\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\aefe1bf77b62b36b12a885b7f05dbd5c\\res\\values-ne\\values-ne.xml",
+                    "source": "C:\\Users\\Fisnik\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\664b7e13d4bf3f9c8c1883a2cf61a474\\res\\values-ne\\values-ne.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,210,314,422,513,620,747,841,931,1019,1129,1245,1348,1463,1565,1680,1851,1963",
+                        "endColumns": "104,103,107,90,106,126,93,89,87,109,115,102,114,101,114,170,111,85",
+                        "endOffsets": "205,309,417,508,615,742,836,926,1014,1124,1240,1343,1458,1560,1675,1846,1958,2044"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Fisnik\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\a1756d68413b69fa40fda45d05283f7d\\res\\values-ne\\values-ne.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -18,16 +28,6 @@
                         "startOffsets": "2049",
                         "endColumns": "100",
                         "endOffsets": "2145"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\GetoarGaxherri\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\92db614349efc97547b751a83866c0ee\\res\\values-ne\\values-ne.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,210,314,422,513,620,747,841,931,1019,1129,1245,1348,1463,1565,1680,1851,1963",
-                        "endColumns": "104,103,107,90,106,126,93,89,87,109,115,102,114,101,114,170,111,85",
-                        "endOffsets": "205,309,417,508,615,742,836,926,1014,1124,1240,1343,1458,1560,1675,1846,1958,2044"
                     }
                 }
             ]
