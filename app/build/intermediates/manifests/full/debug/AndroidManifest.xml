@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="edu.uni_pr.fiek.memorygame.MainActivity" >
+        <activity android:name="edu.uni_pr.fiek.memorygame.MainActivity" />
+        <activity android:name="edu.uni_pr.fiek.memorygame.StarterActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,8 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
     int index;
 
-    int gameMode = 2;
-    int gameDifficulty = 3;
+    int gameMode;
+    // GameMode 0 - 1Player, 1 - 2Player, 2 - PlayerVScpu
+    int gameDifficulty;
+    // GameDifficulty 1 - Easy, 2 - Medium, 3 - Hard
+
     Map<Integer,Integer> cpuMemory = new ConcurrentHashMap<Integer, Integer>();
     private Random randomGenerator = new Random();
     private ArrayList<ImageButton> cards = new ArrayList<ImageButton>();
@@ -52,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent i = getIntent();
+
+        gameMode = i.getIntExtra("GameMode",0);
+        gameDifficulty = i.getIntExtra("GameDifficulty", 0);
 
         tvPlayerOneScore = (TextView) findViewById(R.id.tvPlayerOneScore);
         tvPlayerTwoScore = (TextView) findViewById(R.id.tvPlayerTwoScore);
@@ -375,12 +384,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
+            removedCards.add(clickedFirst);
+            removedCards.add(clickedSecond);
+
             if (gameMode == 2) {
-                removedCards.add(clickedFirst);
-                removedCards.add(clickedSecond);
                 cpuMemory.remove(clickedFirst);
                 cpuMemory.remove(clickedSecond);
             }
+
         } else {
             for (ImageButton a: cards) {
                 a.setBackgroundResource(R.drawable.ic_unknown);
@@ -402,6 +413,12 @@ public class MainActivity extends AppCompatActivity {
                 tvPlayerOneScore.setTextColor(Color.BLACK);
                 tvPlayerTwo.setTextColor(Color.GRAY);
                 tvPlayerTwoScore.setTextColor(Color.GRAY);
+            }
+
+            if( gameMode == 0 ) {
+                turn = 1;
+                tvPlayerOne.setTextColor(Color.BLACK);
+                tvPlayerOneScore.setTextColor(Color.BLACK);
             }
         }
 
@@ -509,8 +526,8 @@ public class MainActivity extends AppCompatActivity {
         if(cards.size() == removedCards.size()){
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
             alertDialogBuilder
-                    .setMessage("Game Over!\nPlayer 1: "+playerOnePoints+"  Player 2: " + playerTwoPoints +
-                    "\nWinner: " + ((playerOnePoints > playerTwoPoints)? "Player 1" : "Player 2") + ((playerOnePoints == playerTwoPoints)? "\nDRAW!" : ""))
+                    .setMessage("Game Over!\nPlayer 1: "+playerOnePoints+"  " + tvPlayerTwo.getText() + ": " + playerTwoPoints +
+                    "\nWinner: " + ((playerOnePoints > playerTwoPoints)? "Player 1" : tvPlayerTwo.getText()) + ((playerOnePoints == playerTwoPoints)? "\nDRAW!" : ""))
                     .setCancelable(false)
                     .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
                         @Override
