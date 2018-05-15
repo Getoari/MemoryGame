@@ -549,6 +549,8 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("playerOnePoints",playerOnePoints);
             intent.putExtra("playerTwoPoints",playerTwoPoints);
             intent.putExtra("PlayerTwo",tvPlayerTwo.getText());
+            intent.putExtra("GameMode",gameMode);
+            intent.putExtra("GameDifficulty",gameDifficulty);
             startActivity(intent);
 
 

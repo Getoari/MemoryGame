@@ -1156,6 +1156,10 @@
         "source": "C:\\Users\\Fisnik\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\664b7e13d4bf3f9c8c1883a2cf61a474\\res\\drawable-xxhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
+        "merged": "D:\\FIEK\\Semestri VI\\Android\\MemoryGame\\app\\build\\intermediates\\res\\merged\\debug\\layout_dialog_name.xml.flat",
+        "source": "D:\\FIEK\\Semestri VI\\Android\\MemoryGame\\app\\src\\main\\res\\layout\\dialog_name.xml"
+    },
+    {
         "merged": "D:\\FIEK\\Semestri VI\\Android\\MemoryGame\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Fisnik\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\664b7e13d4bf3f9c8c1883a2cf61a474\\res\\drawable-xxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
     },
