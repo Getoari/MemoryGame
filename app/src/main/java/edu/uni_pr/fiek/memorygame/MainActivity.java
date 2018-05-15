@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         frontOfCardsResources();
-
+        //shuffle i perzin not random
         Collections.shuffle(Arrays.asList(cardsArray));
 
         card0.setOnClickListener(new View.OnClickListener() {
@@ -366,7 +366,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void calculate() {
         if(firstCard == secondCard) {
-
+             // kur dy karta jane te njetja ato zhdukken
             cards.get(clickedFirst).setVisibility(View.INVISIBLE);
             cards.get(clickedSecond).setVisibility(View.INVISIBLE);
 
@@ -522,7 +522,7 @@ public class MainActivity extends AppCompatActivity {
     private void checkEnd() {
 
         if(cards.size() == removedCards.size()){
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+            /*AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
             alertDialogBuilder
                     .setMessage("Game Over!\nPlayer 1: "+playerOnePoints+"  " + tvPlayerTwo.getText() + ": " + playerTwoPoints +
                     "\nWinner: " + ((playerOnePoints > playerTwoPoints)? "Player 1" : tvPlayerTwo.getText()) + ((playerOnePoints == playerTwoPoints)? "\nDRAW!" : ""))
@@ -544,6 +544,15 @@ public class MainActivity extends AppCompatActivity {
 
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
+            */
+            Intent intent = new Intent(getApplicationContext(),Result.class);
+            intent.putExtra("playerOnePoints",playerOnePoints);
+            intent.putExtra("playerTwoPoints",playerTwoPoints);
+            intent.putExtra("PlayerTwo",tvPlayerTwo.getText());
+            startActivity(intent);
+
+
+
         }
     }
 

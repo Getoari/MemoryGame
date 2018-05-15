@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-22:12
-INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-22:12
-INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-22:12
-INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-22:12
+ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-23:12
 MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\Fisnik\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\664b7e13d4bf3f9c8c1883a2cf61a474\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Fisnik\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\f9684881a05c0f40c29d7803507980ff\AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\Fisnik\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\08e5e64769158f837c53bbd7196a4388\AndroidManifest.xml:17:1-22:12
@@ -13,25 +13,25 @@ MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\Fisnik
 MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\Fisnik\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\ed3714224365e2b5cb3d0c0ad5c6b4b1\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-compat:27.0.2] C:\Users\Fisnik\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\a1756d68413b69fa40fda45d05283f7d\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\Fisnik\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\694c53bac0cfe9e7b5fe18a74ec38fb8\AndroidManifest.xml:17:1-24:12
-INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-22:12
-INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-22:12
-INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-23:12
 	package
 		ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:3:5-41
 		INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml
 		INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml
-		ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-22:12
+		ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-23:12
 		INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml
-		ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-22:12
+		ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:1-23:12
 		INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:5:5-20:19
+ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:5:5-21:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Fisnik\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\f9684881a05c0f40c29d7803507980ff\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Fisnik\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\f9684881a05c0f40c29d7803507980ff\AndroidManifest.xml:9:5-20
 	android:supportsRtl
@@ -47,7 +47,7 @@ MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Fi
 	android:theme
 		ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:11:9-40
 activity#edu.uni_pr.fiek.memorygame.MainActivity
-ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:12:9-59
+ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:12:9-50
 	android:name
 		ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:12:19-47
 activity#edu.uni_pr.fiek.memorygame.StarterActivity
@@ -64,6 +64,10 @@ category#android.intent.category.LAUNCHER
 ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:17:17-77
 	android:name
 		ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:17:27-74
+activity#edu.uni_pr.fiek.memorygame.Result
+ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:20:9-53
+	android:name
+		ADDED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml:20:19-41
 uses-sdk
 INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\FIEK\Semestri VI\Android\MemoryGame\app\src\main\AndroidManifest.xml
