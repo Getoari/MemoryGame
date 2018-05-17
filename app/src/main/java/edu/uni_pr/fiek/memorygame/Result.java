@@ -71,6 +71,13 @@ public class Result extends AppCompatActivity {
         intent.putExtra("GameMode",gameMode);
         intent.putExtra("GameDifficulty",gameDifficulty);
         startActivity(intent);
+        finish();
+    }
+    public void backToMeny (View view)
+    {
+        Intent intent = new Intent(getApplicationContext(),StarterActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }
