@@ -507,6 +507,14 @@ public class MainActivity extends AppCompatActivity {
                             index = randomGenerator.nextInt(cards.size());
                         }
                     }
+                    if(!match)
+                    {
+                        while ((index ==tempIndex || removedCards.contains(index) || cpuMemory.containsKey(index)))
+                        {
+                            randomGenerator = new Random();
+                            index = randomGenerator.nextInt(cards.size());
+                        }
+                    }
 
                     ImageButton ib = cards.get(index);
                     doAction(ib, index);
@@ -579,5 +587,26 @@ public class MainActivity extends AppCompatActivity {
         image208 = R.drawable.ic_image108;
         image209 = R.drawable.ic_image109;
         image210 = R.drawable.ic_image110;
+    }
+    @Override
+    public void onBackPressed()
+    {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage("Are you sure you want to exit?");
+        builder.setCancelable(true);
+        builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        builder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        AlertDialog alertDialog= builder.create();
+        alertDialog.show();
     }
 }

@@ -44,5 +44,15 @@
         android:text="Try Again"
         android:textAllCaps="false"
         android:textSize="30sp"
-        android:onClick="tryAgain"/>
+        android:onClick="tryAgain"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to Menu"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:onClick="backToMeny"
+
+        />
       </LinearLayout>
