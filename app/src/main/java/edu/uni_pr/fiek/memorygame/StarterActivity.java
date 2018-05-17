@@ -14,6 +14,8 @@ public class StarterActivity extends AppCompatActivity {
 
     Button btnOnePlayer, btnTwoPlayers, btnPlayerCpu, btnHighscores;
     Button btnEasy, btnMedium, btnHard;
+    AlertDialog dialog;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +27,11 @@ public class StarterActivity extends AppCompatActivity {
         btnPlayerCpu = (Button) findViewById(R.id.btnPlayerCpu);
         btnHighscores = (Button) findViewById(R.id.btnHighscores);
 
+        intent = new Intent(getApplicationContext(), MainActivity.class);
+
         btnOnePlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("GameMode","1player");
                 startActivity(intent);
             }
@@ -37,7 +40,6 @@ public class StarterActivity extends AppCompatActivity {
         btnTwoPlayers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                 intent.putExtra("GameMode","2players");
                 startActivity(intent);
             }
@@ -51,7 +53,7 @@ public class StarterActivity extends AppCompatActivity {
                 alert.setTitle("Select game difficulty:");
                 alert.setView(R.layout.select_difficulty);
 
-                AlertDialog dialog = alert.create();
+                dialog = alert.create();
                 dialog.show();
 
                 btnEasy = (Button) dialog.findViewById(R.id.btnEasy);
@@ -61,30 +63,30 @@ public class StarterActivity extends AppCompatActivity {
                 btnEasy.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                         intent.putExtra("GameMode","cpu");
                         intent.putExtra("GameDifficulty","easy");
                         startActivity(intent);
+                        dialog.hide();
                     }
                 });
 
                 btnMedium.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                         intent.putExtra("GameMode","cpu");
                         intent.putExtra("GameDifficulty","medium");
                         startActivity(intent);
+                        dialog.hide();
                     }
                 });
 
                 btnHard.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                         intent.putExtra("GameMode","cpu");
                         intent.putExtra("GameDifficulty","hard");
                         startActivity(intent);
+                        dialog.hide();
                     }
                 });
             }
