@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,9 +11,12 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.security.KeyStore;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
@@ -37,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
     String gameMode;
     String gameDifficulty;
 
-    Map<Integer,Integer> cpuMemory = new ConcurrentHashMap<Integer, Integer>();
+    Map<Integer,Integer> cpuMemory = new LinkedHashMap<>();
+    Map<Integer,Integer> tempCpuMemory;
     private Random randomGenerator = new Random();
     private ArrayList<ImageButton> cards = new ArrayList<ImageButton>();
     private ArrayList<Integer> removedCards = new ArrayList<Integer>();
@@ -141,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         frontOfCardsResources();
-        //shuffle i perzin not random
+        
         Collections.shuffle(Arrays.asList(cardsArray));
 
         card0.setOnClickListener(new View.OnClickListener() {
@@ -354,6 +357,7 @@ public class MainActivity extends AppCompatActivity {
                 a.setEnabled(false);
             }
 
+
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -366,7 +370,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void calculate() {
         if(firstCard == secondCard) {
-             // kur dy karta jane te njetja ato zhdukken
+
             cards.get(clickedFirst).setVisibility(View.INVISIBLE);
             cards.get(clickedSecond).setVisibility(View.INVISIBLE);
 
@@ -430,15 +434,20 @@ public class MainActivity extends AppCompatActivity {
     private void cpuPlay() {
 
         if(gameDifficulty.equals("easy")) {
-            for (int key1: cpuMemory.keySet()) {
-                if(cpuMemory.size() > 2) {
-                    cpuMemory.remove(key1);
+            Iterator<Map.Entry<Integer,Integer>> iterator = cpuMemory.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<Integer,Integer> entry = iterator.next();
+                if(cpuMemory.size() > 4){
+                    iterator.remove();
                 }
             }
         } else if(gameDifficulty.equals("medium")) {
-            for (int key1: cpuMemory.keySet()) {
-                if(cpuMemory.size() > 3) {
-                    cpuMemory.remove(key1);
+            Iterator<Map.Entry<Integer,Integer>> iterator = cpuMemory.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<Integer,Integer> entry = iterator.next();
+                if(cpuMemory.size() > 6){
+                    iterator.remove();
+                    System.out.println("\n"+cpuMemory);
                 }
             }
         }
@@ -465,7 +474,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    if (match == false) {
+                    if (!match) {
                         index = randomGenerator.nextInt(cards.size());
 
                         while (removedCards.contains(index)) {
@@ -501,8 +510,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    if (match == false) {
-                        while (index == tempIndex || removedCards.contains(index)) {
+                    if (!match) {
+                        while (index == tempIndex || removedCards.contains(index) || cpuMemory.containsKey(index)) {
                             randomGenerator = new Random();
                             index = randomGenerator.nextInt(cards.size());
                         }
@@ -530,29 +539,6 @@ public class MainActivity extends AppCompatActivity {
     private void checkEnd() {
 
         if(cards.size() == removedCards.size()){
-            /*AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
-            alertDialogBuilder
-                    .setMessage("Game Over!\nPlayer 1: "+playerOnePoints+"  " + tvPlayerTwo.getText() + ": " + playerTwoPoints +
-                    "\nWinner: " + ((playerOnePoints > playerTwoPoints)? "Player 1" : tvPlayerTwo.getText()) + ((playerOnePoints == playerTwoPoints)? "\nDRAW!" : ""))
-                    .setCancelable(false)
-                    .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    })
-                    .setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-                    });
-
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
-            */
             Intent intent = new Intent(getApplicationContext(),Result.class);
             intent.putExtra("playerOnePoints",playerOnePoints);
             intent.putExtra("playerTwoPoints",playerTwoPoints);
@@ -560,6 +546,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("GameMode",gameMode);
             intent.putExtra("GameDifficulty",gameDifficulty);
             startActivity(intent);
+            finish();
 
 
 
@@ -594,13 +581,13 @@ public class MainActivity extends AppCompatActivity {
         final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setMessage("Are you sure you want to exit?");
         builder.setCancelable(true);
-        builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.cancel();
             }
         });
-        builder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 finish();
