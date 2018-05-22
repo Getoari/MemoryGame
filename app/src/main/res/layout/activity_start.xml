@@ -10,14 +10,19 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="46dp"
-        android:layout_marginBottom="26dp"
-        android:src="@drawable/ic_memorygame"/>
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_memorygame" />
     <Button
         android:id="@+id/btnOnePlayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_start_menu"
+        android:padding="17dp"
+        android:textSize="17sp"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:text="1 Player"/>
@@ -25,6 +30,10 @@
         android:id="@+id/btnTwoPlayers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_start_menu"
+        android:padding="17dp"
+        android:textSize="17sp"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:text="2 Players"/>
@@ -32,6 +41,10 @@
         android:id="@+id/btnPlayerCpu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_start_menu"
+        android:padding="17dp"
+        android:textSize="17sp"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:text="Player VS CPU" />
@@ -39,6 +52,10 @@
         android:id="@+id/btnHighscores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_start_menu"
+        android:padding="17dp"
+        android:textSize="17sp"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:text="Highscores"/>

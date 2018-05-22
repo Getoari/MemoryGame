@@ -75,8 +75,6 @@ public class Result extends AppCompatActivity {
     }
     public void backToMeny (View view)
     {
-        Intent intent = new Intent(getApplicationContext(),StarterActivity.class);
-        startActivity(intent);
         finish();
     }
 

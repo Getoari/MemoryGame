@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     String gameDifficulty;
 
     Map<Integer,Integer> cpuMemory = new LinkedHashMap<>();
-    Map<Integer,Integer> tempCpuMemory;
     private Random randomGenerator = new Random();
     private ArrayList<ImageButton> cards = new ArrayList<ImageButton>();
     private ArrayList<Integer> removedCards = new ArrayList<Integer>();
@@ -52,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
     int turn = 1;
 
     int playerOnePoints = 0, playerTwoPoints = 0;
+
+    Handler handler = new Handler();
+
+    static boolean active = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         frontOfCardsResources();
-        
+
         Collections.shuffle(Arrays.asList(cardsArray));
 
         card0.setOnClickListener(new View.OnClickListener() {
@@ -437,7 +440,7 @@ public class MainActivity extends AppCompatActivity {
             Iterator<Map.Entry<Integer,Integer>> iterator = cpuMemory.entrySet().iterator();
             while (iterator.hasNext()) {
                 Map.Entry<Integer,Integer> entry = iterator.next();
-                if(cpuMemory.size() > 4){
+                if(cpuMemory.size() > 2){
                     iterator.remove();
                 }
             }
@@ -445,9 +448,8 @@ public class MainActivity extends AppCompatActivity {
             Iterator<Map.Entry<Integer,Integer>> iterator = cpuMemory.entrySet().iterator();
             while (iterator.hasNext()) {
                 Map.Entry<Integer,Integer> entry = iterator.next();
-                if(cpuMemory.size() > 6){
+                if(cpuMemory.size() > 4){
                     iterator.remove();
-                    System.out.println("\n"+cpuMemory);
                 }
             }
         }
@@ -456,8 +458,7 @@ public class MainActivity extends AppCompatActivity {
             a.setClickable(false);
         }
 
-        Handler handler1 = new Handler();
-        handler1.postDelayed(new Runnable() {
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 boolean match = false;
@@ -472,6 +473,14 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             }
                         }
+                    }
+
+                    if(removedCards.size() == 16 && gameDifficulty.equals("hard")) {
+                        while (removedCards.contains(index) || cpuMemory.containsKey(index)) {
+                            randomGenerator = new Random();
+                            index = randomGenerator.nextInt(cards.size());
+                        }
+                        match = true;
                     }
 
                     if (!match) {
@@ -489,8 +498,7 @@ public class MainActivity extends AppCompatActivity {
             }
         },1000);
 
-        Handler handler2 = new Handler();
-        handler2.postDelayed(new Runnable() {
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 boolean match = false;
@@ -539,17 +547,16 @@ public class MainActivity extends AppCompatActivity {
     private void checkEnd() {
 
         if(cards.size() == removedCards.size()){
-            Intent intent = new Intent(getApplicationContext(),Result.class);
-            intent.putExtra("playerOnePoints",playerOnePoints);
-            intent.putExtra("playerTwoPoints",playerTwoPoints);
-            intent.putExtra("PlayerTwo",tvPlayerTwo.getText());
-            intent.putExtra("GameMode",gameMode);
-            intent.putExtra("GameDifficulty",gameDifficulty);
-            startActivity(intent);
-            finish();
-
-
-
+            if(active) {
+                Intent intent = new Intent(getApplicationContext(),Result.class);
+                intent.putExtra("playerOnePoints",playerOnePoints);
+                intent.putExtra("playerTwoPoints",playerTwoPoints);
+                intent.putExtra("PlayerTwo",tvPlayerTwo.getText());
+                intent.putExtra("GameMode",gameMode);
+                intent.putExtra("GameDifficulty",gameDifficulty);
+                startActivity(intent);
+                finish();
+            }
         }
     }
 
@@ -595,5 +602,17 @@ public class MainActivity extends AppCompatActivity {
         });
         AlertDialog alertDialog= builder.create();
         alertDialog.show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        active = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        active = false;
     }
 }

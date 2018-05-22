@@ -17,7 +17,7 @@
             android:id="@+id/tvPlayerOne"
             android:layout_width="wrap_content"
             android:text="Player 1"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:layout_alignParentLeft="true"
             android:layout_height="wrap_content" />
         <TextView
