@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="GAME OVER!"
-        android:textSize="60sp" />
+        android:textSize="60sp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,17 +25,14 @@
         android:layout_height="wrap_content"
         android:text="CPU:3/Player7"
         android:textSize="30sp"
-        android:layout_marginTop="0dp"
-        />
+        android:layout_marginTop="0dp"/>
     <TextView
         android:id="@+id/highScoreLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="High Score : 300"
+        android:text=""
         android:textSize="30sp"
-        android:layout_marginTop="80dp"
-
-        />
+        android:layout_marginTop="80dp"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -44,15 +41,20 @@
         android:text="Try Again"
         android:textAllCaps="false"
         android:textSize="30sp"
-        android:onClick="tryAgain"
-        />
+        android:onClick="tryAgain"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back to Menu"
         android:textAllCaps="false"
         android:textSize="30sp"
-        android:onClick="backToMeny"
+        android:onClick="backToMeny"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:onClick="share"/>
 
-        />
-      </LinearLayout>
+</LinearLayout>

@@ -91,5 +91,13 @@ public class StarterActivity extends AppCompatActivity {
                 });
             }
         });
+
+        btnHighscores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HighscoreActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
