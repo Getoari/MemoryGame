@@ -22,7 +22,7 @@ public class Result extends AppCompatActivity {
     TextView highScoreLabel;
     int playerOnePoints;
     int playerTwoPoints;
-    String playerTwo;
+    String playerTwo = "player";
     String gameMode;
     String gameDifficulty;
     Database myDatabase;
@@ -32,8 +32,8 @@ public class Result extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        scoreLabel = (TextView) findViewById(R.id.scoreLabel);
-        highScoreLabel =(TextView) findViewById(R.id.highScoreLabel);
+        scoreLabel = findViewById(R.id.scoreLabel);
+        highScoreLabel = findViewById(R.id.highScoreLabel);
 
         Intent i = getIntent();
 
@@ -51,14 +51,17 @@ public class Result extends AppCompatActivity {
             final AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
 
-            Button btnName = (Button) alertDialog.findViewById(R.id.btnName);
-            etName = (EditText) alertDialog.findViewById(R.id.etName);
+            Button btnName = alertDialog.findViewById(R.id.btnName);
+            etName = alertDialog.findViewById(R.id.etName);
+
+            // if the user doesn't enter his name
+            scoreLabel.setText("CPU: " + playerTwoPoints + "      Player: " + playerOnePoints);
 
             btnName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     playerName = etName.getText().toString();
-                    scoreLabel.setText("CPU: " + playerTwoPoints + "/" + playerName + ": " + playerOnePoints);
+                    scoreLabel.setText("CPU: " + playerTwoPoints + "      " + playerName + ": " + playerOnePoints);
 
                     // Saving data to DB
                     myDatabase = new Database(Result.this);
@@ -71,10 +74,10 @@ public class Result extends AppCompatActivity {
                     }
 
                     // Getting Highscore
-                    Cursor data = myDatabase.getData(gameDifficulty);
+                    Cursor data = myDatabase.getHighscore(gameDifficulty);
 
                     while (data.moveToNext()) {
-                        highScoreLabel.setText("Highscore: " + data.getString(1));
+                        highScoreLabel.setText("Highscore: " + data.getString(0));
                     }
 
 
@@ -83,10 +86,12 @@ public class Result extends AppCompatActivity {
             });
         } else if(gameMode.equals("2players")) {
             playerName = "Player 1";
-            scoreLabel.setText(playerName + ": " + playerOnePoints +"/"+ playerTwo + ": " + playerTwoPoints);
+            scoreLabel.setText(playerName + ": " + playerOnePoints +"\n"+ playerTwo + ": " + playerTwoPoints);
         } else {
             scoreLabel.setText("You Won!");
         }
+
+
     }
     public void tryAgain(View view)
     {

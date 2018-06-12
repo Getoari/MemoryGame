@@ -4,10 +4,9 @@ import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,6 +18,8 @@ public class HighscoreActivity extends AppCompatActivity {
 
     Database myDatabase;
     ListView lvHighscore;
+    ListAdapter adapter;
+    ArrayList<Player> players = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +30,19 @@ public class HighscoreActivity extends AppCompatActivity {
         btnMediumHighscores = findViewById(R.id.btnMediumHighscores);
         btnHardHighscores = findViewById(R.id.btnHardHighscores);
 
-        lvHighscore = (ListView) findViewById(R.id.lvHighscore);
+        lvHighscore = findViewById(R.id.lvHighscore);
         myDatabase = new Database(this);
+
+        // default is the easy
+        populateListView("easy");
 
         btnEasyHighscores.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 populateListView("easy");
+                btnEasyHighscores.setBackgroundResource(R.drawable.tab_button_active);
+                btnMediumHighscores.setBackgroundResource(R.drawable.tab_button_inactive);
+                btnHardHighscores.setBackgroundResource(R.drawable.tab_button_inactive);
             }
         });
 
@@ -43,6 +50,9 @@ public class HighscoreActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 populateListView("medium");
+                btnEasyHighscores.setBackgroundResource(R.drawable.tab_button_inactive);
+                btnMediumHighscores.setBackgroundResource(R.drawable.tab_button_active);
+                btnHardHighscores.setBackgroundResource(R.drawable.tab_button_inactive);
             }
         });
 
@@ -50,21 +60,24 @@ public class HighscoreActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 populateListView("hard");
+                btnEasyHighscores.setBackgroundResource(R.drawable.tab_button_inactive);
+                btnMediumHighscores.setBackgroundResource(R.drawable.tab_button_inactive);
+                btnHardHighscores.setBackgroundResource(R.drawable.tab_button_active);
             }
         });
-
     }
 
     private void populateListView(String level) {
 
+        players = new ArrayList<>();
+
         Cursor data = myDatabase.getData(level);
-        ArrayList<String> listData = new ArrayList<>();
 
         while (data.moveToNext()) {
-            listData.add(data.getString(0)+"\n"+data.getString(1)+" Points");
+            players.add(new Player(data.getString(0),data.getString(1)+" Points"));
         }
 
-        ListAdapter adapter = new ArrayAdapter<>(this, R.layout.row_layout, listData);
+        adapter = new ListAdapter(HighscoreActivity.this, players);
         lvHighscore.setAdapter(adapter);
     }
 }
